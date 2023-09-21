@@ -15,5 +15,6 @@ void rgbToStandardOutput(const std::vector<std::vector<rgb>>& normalRGBArray) { 
         }
     }
 
-    std::clog << '\n';
+    std::clog << "\n";
+    std::clog << "Done\n";
 }
