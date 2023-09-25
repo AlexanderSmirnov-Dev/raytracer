@@ -1,10 +1,9 @@
 #pragma once
 
-#include "ppmFileGen.h"
 #include "timer.h"
 #include "raytracer.h"
 
-#include "../../libs/eigen/Eigen/Dense"
+#include "Eigen/Dense"
 
 #include <iostream>
 #include <cstdint>
