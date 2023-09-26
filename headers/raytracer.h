@@ -2,6 +2,7 @@
 
 #include "Eigen/Dense"
 #include "ppmFileGen.h"
+#include "sceneInfo.h"
 
 using Eigen::Vector2d;
 using Eigen::Vector3d;
@@ -16,13 +17,5 @@ public:
     rgb rayColour();
 };
 
-struct screen_info{
-    uint64_t screenWidth;
-    uint64_t screenHeight;
-    Vector3d cameraCentre;
-    Vector3d pixelUpperLeft;
-    Vector3d pixelDeltaHor;
-    Vector3d pixelDeltaVer;
-};
 
-void render(std::vector<std::vector<rgb>> pixelVec, screen_info screenInfo);
+void render(std::vector<std::vector<rgb>> pixelVec, scene_info sceneInfo);

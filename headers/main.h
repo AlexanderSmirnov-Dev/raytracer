@@ -2,7 +2,7 @@
 
 #include "timer.h"
 #include "raytracer.h"
-
+#include "sceneInfo.h"
 #include "Eigen/Dense"
 
 #include <iostream>
