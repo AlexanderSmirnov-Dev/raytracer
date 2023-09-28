@@ -19,3 +19,6 @@ public:
 
 
 void render(std::vector<std::vector<rgb>> pixelVec, scene_info sceneInfo);
+
+
+double sphereCollision(const Vector3d& centre, double radius, const Ray& ray);

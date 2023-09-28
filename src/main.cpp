@@ -16,6 +16,5 @@ int main() {
 
     // --- end --- //
 
-
     render(temp, sceneInfo);
 }

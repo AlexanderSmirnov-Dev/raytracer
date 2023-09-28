@@ -12,7 +12,7 @@ scene_info generateScene(uint64_t screenWidth, uint64_t screenHeight) {
     Vector3d cameraCentre{0, 0, 0};
 
     Vector3d viewportHorVec{viewportWidth, 0, 0};
-    Vector3d viewportVerVec{0, -viewportWidth, 0};
+    Vector3d viewportVerVec{0, -viewportHeight, 0};
 
     Vector3d pixelDeltaHor = viewportHorVec / screenWidth;
     Vector3d pixelDeltaVer = viewportVerVec / screenHeight;
