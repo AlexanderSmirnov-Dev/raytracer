@@ -43,13 +43,13 @@ rgb Ray::rayColour() {
 
 double sphereCollision(const Vector3d& centre, double radius, const Ray& ray) {
     Vector3d oc{ray.ori - centre};
-    double a{ray.dir.dot(ray.dir)};
-    double b{2.0*oc.dot(ray.dir)};
-    double c{oc.dot(oc) - radius * radius};
-    double discriminant{b*b - 4*a*c};
+    double a{std::pow(ray.dir.norm(), 2)};
+    double halfB{oc.dot(ray.dir)};
+    double c{std::pow(oc.norm(), 2) - radius * radius};
+    double discriminant{halfB*halfB - a*c};
 
     if (discriminant < 0) 
         return -1.0;
     else 
-        return (-b - sqrt(discriminant)) / (2.0 * a);
+        return (-halfB - sqrt(discriminant)) / a;
 }
