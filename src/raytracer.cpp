@@ -1,18 +1,24 @@
 #include "raytracer.h"
 #include "sceneInfo.h"
 
-void render(std::vector<std::vector<rgb>> pixelVec, scene_info sceneInfo) {
+void render(std::vector<std::vector<rgb>> pixelVec, const scene_info& sceneInfo) {
     vec3 pixelCentre{};
     vec3 rayDirection{};
     rgb pixelColour{};
     for (int j{}; j < sceneInfo.screenHeight; ++j) {
         for (int i{}; i < sceneInfo.screenWidth; ++i) {
-            //vec.emplace_back(rgb {j / static_cast<double>(sceneInfo.screenWidth), 0, 0});
-            pixelCentre = sceneInfo.pixelUpperLeft + (i * sceneInfo.pixelDeltaHor) + (j * sceneInfo.pixelDeltaVer);
-            rayDirection = pixelCentre - sceneInfo.cameraCentre;
-            Ray r{sceneInfo.cameraCentre, rayDirection};
+            pixelColour = {0, 0, 0};
+            for (int sample{}; sample < sceneInfo.samplesPerPixel; ++sample) {
+                //pixelCentre = sceneInfo.pixelUpperLeft + (i * sceneInfo.pixelDeltaHor) + (j * sceneInfo.pixelDeltaVer);
+                //rayDirection = pixelCentre - sceneInfo.cameraCentre;
+                //Ray r{sceneInfo.cameraCentre, rayDirection};
 
-            pixelColour = r.rayColour();
+                Ray r{};
+                r = getRay(i, j, sceneInfo);
+                pixelColour += r.rayColour();
+            }
+            double scale{1.0 / sceneInfo.samplesPerPixel}; // anti aliasing
+            pixelColour *= scale;
             pixelVec.at(j).at(i) = pixelColour;
         }
     }
@@ -52,4 +58,22 @@ double sphereCollision(const vec3& centre, double radius, const Ray& ray) {
         return -1.0;
     else 
         return (-halfB - sqrt(discriminant)) / a;
+}
+
+
+Ray getRay(u64 i, u64 j, const scene_info& sceneInfo) {
+    // Get a randomly sampled camera ray for the pixel at location i,j
+    vec3 pixelCentre{sceneInfo.pixelUpperLeft + i * sceneInfo.pixelDeltaHor + j * sceneInfo.pixelDeltaVer};
+    vec3 pixelSample{pixelCentre + pixelSampleSquare(sceneInfo)};
+    vec3 rayDirection{pixelSample - sceneInfo.cameraCentre};
+
+    return Ray{sceneInfo.cameraCentre, rayDirection};
+    
+}
+
+
+vec3 pixelSampleSquare(const scene_info& sceneInfo) {
+    double px{-0.5 + randDouble()};
+    double py{-0.5 + randDouble()};
+    return (px * sceneInfo.pixelDeltaHor) + (py * sceneInfo.pixelDeltaVer); 
 }

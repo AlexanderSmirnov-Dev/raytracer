@@ -3,6 +3,7 @@
 #include "Eigen/Dense"
 #include "ppmFileGen.h"
 #include "sceneInfo.h"
+#include "rand.h"
 
 using vec2 = Eigen::Vector2d;
 using vec3 = Eigen::Vector3d;
@@ -18,7 +19,7 @@ using i16 = int16_t;
 using i8 = int8_t;
 
 
-void render(std::vector<std::vector<rgb>> pixelVec, scene_info sceneInfo);
-
-
+void render(std::vector<std::vector<rgb>> pixelVec, const scene_info& sceneInfo);
 double sphereCollision(const vec3& centre, double radius, const Ray& ray);
+Ray getRay(u64 i, u64 j, const scene_info& sceneInfo);
+vec3 pixelSampleSquare(const scene_info& sceneInfo);

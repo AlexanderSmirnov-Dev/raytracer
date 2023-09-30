@@ -34,13 +34,10 @@ struct scene_info{
     vec3 pixelUpperLeft;
     vec3 pixelDeltaHor;
     vec3 pixelDeltaVer;
+    u16 samplesPerPixel;
 };
 
 
-void render(std::vector<std::vector<rgb>> pixelVec, scene_info sceneInfo);
-
-
+void render(std::vector<std::vector<rgb>> pixelVec, const scene_info& sceneInfo);
 double sphereCollision(const vec3& centre, double radius, const Ray& ray);
-
-
 scene_info generateScene(u64 screenWidth, u64 screenHeight);

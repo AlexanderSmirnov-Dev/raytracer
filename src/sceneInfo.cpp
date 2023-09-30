@@ -6,6 +6,8 @@ scene_info generateScene(u64 screenWidth, u64 screenHeight) {
     sceneInfo.screenWidth = screenWidth;
     sceneInfo.screenHeight = screenHeight;
 
+    sceneInfo.samplesPerPixel = 10;
+
     double viewportHeight{2.0};
     double viewportWidth = viewportHeight * static_cast<double>(screenWidth / static_cast<double>(screenHeight));
     double focalLength{2.0};
