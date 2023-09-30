@@ -3,8 +3,8 @@
 int main() {
     Timer stopWatch{};
 
-    uint64_t screenWidth{1920};
-    uint64_t screenHeight{1080};
+    u64 screenWidth{1920};
+    u64 screenHeight{1080};
     scene_info sceneInfo{};
     sceneInfo = generateScene(screenWidth, screenHeight);
 

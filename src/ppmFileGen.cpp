@@ -11,7 +11,7 @@ void rgbToStandardOutput(const std::vector<std::vector<rgb>>& normalRGBArray) { 
         std::clog << "\rScanlines remaining: " << (normalRGBArray.size() - i) << ' ' << std::flush;
         i += 1;
         for (const auto& innerVec: outerVec) {
-            std::cout << static_cast<uint64_t>(255.999 * innerVec.r) << ' ' << static_cast<uint64_t>(255.999 * innerVec.g) << ' ' << static_cast<uint64_t>(255.999 * innerVec.b) << '\n';
+            std::cout << static_cast<uint64_t>(255.999 * innerVec.x()) << ' ' << static_cast<uint64_t>(255.999 * innerVec.y()) << ' ' << static_cast<uint64_t>(255.999 * innerVec.z()) << '\n';
         }
     }
 
