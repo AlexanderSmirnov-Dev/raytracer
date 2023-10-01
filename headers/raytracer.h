@@ -4,6 +4,7 @@
 #include "ppmFileGen.h"
 #include "sceneInfo.h"
 #include "rand.h"
+#include "util.h"
 
 using vec2 = Eigen::Vector2d;
 using vec3 = Eigen::Vector3d;
